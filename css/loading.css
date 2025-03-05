@@ -1,0 +1,118 @@
+*{
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    background-color: black;
+}
+.loader{
+    /* 相对定位 */
+    position: relative;
+    width: 100%;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.loader span{
+    /* 绝对定位 */
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 10px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    /* 默认旋转180度，不透明度为0 */
+    transform: rotate(180deg);
+    opacity: 0;
+    /* 执行动画：动画名 时长 线性的 无限次播放 */
+    animation: move 2.5s linear infinite;
+}
+.loader span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 30px;
+    height: 5px;
+    border-radius: 50%;
+    /* 投影效果+模糊 */
+    background-color: rgba(0,0,0,0.15);
+    filter: blur(1.5px);
+}
+/* 分别为每一个span这是动画延迟 */
+.loader span:nth-child(2){
+    animation-delay: 0.2s;
+}
+.loader span:nth-child(3){
+    animation-delay: 0.4s;
+}
+.loader span:nth-child(4){
+    animation-delay: 0.6s;
+}
+.loader span:nth-child(5){
+    animation-delay: 0.8s;
+}
+.loader span:nth-child(6){
+    animation-delay: 1s;
+}
+.loader span:nth-child(7){
+    animation-delay: 1.2s;
+}
+.loader span:nth-child(8){
+    animation-delay: 1.4s;
+}
+.loader span:nth-child(9){
+    animation-delay: 1.6s;
+}
+.loader span:nth-child(10){
+    animation-delay: 1.8s;
+}
+/* 最后面的三个圆的统一样式 */
+.loader span:nth-child(8)::before,
+.loader span:nth-child(9)::before,
+.loader span:nth-child(10)::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 13px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+/* 为三个圆设置颜色 */
+.loader span:nth-child(8)::before{
+    background-color: #eccc68;
+}
+.loader span:nth-child(9)::before{
+    background-color: #7bed9f;
+}
+.loader span:nth-child(10)::before{
+    background-color: #ff6b81;
+}
+
+/* 定义动画 */
+@keyframes move {
+    0%{
+        right: 0;
+        opacity: 0;
+    }
+    35%{
+        right: 41%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    65%{
+        right: 59%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    100%{
+        right: 100%;
+        transform: rotate(-180deg);
+        opacity: 0;
+    }
+}
